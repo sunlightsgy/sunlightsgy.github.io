@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Sunlight's Blog]]></title>
+  <title><![CDATA[sunlight's blog]]></title>
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
@@ -8,7 +8,7 @@
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
-    <name><![CDATA[沈光耀]]></name>
+    <name><![CDATA[sunlightsgy]]></name>
     
   </author>
   
