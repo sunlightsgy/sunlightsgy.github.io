@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-03-04T16:33:49.000Z</updated>
+  <updated>2017-03-04T18:28:27.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -13,6 +13,19 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[My New Post]]></title>
+    <link href="https://sunlightsgy.github.io/2017/03/05/My-New-Post/"/>
+    <id>https://sunlightsgy.github.io/2017/03/05/My-New-Post/</id>
+    <published>2017-03-04T18:28:27.000Z</published>
+    <updated>2017-03-04T18:28:27.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
