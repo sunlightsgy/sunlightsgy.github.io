@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Sunlight Blog]]></title>
-  
+  <title><![CDATA[Sunlight's Blog]]></title>
+  <subtitle><![CDATA[活到老，学到老]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
   <updated>2017-03-04T16:33:49.000Z</updated>
