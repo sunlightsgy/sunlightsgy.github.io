@@ -90,21 +90,18 @@
 
 
 <meta name="description" content="解题过程这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。
-从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。
-Level 0: Candle本题只需要我">
+从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP Buflab 解题报告">
 <meta property="og:url" content="https://sunlightsgy.github.io/2017/03/05/CSAPP-Buflab-解题报告/index.html">
 <meta property="og:site_name" content="sunlight's blog">
 <meta property="og:description" content="解题过程这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。
-从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。
-Level 0: Candle本题只需要我">
-<meta property="og:updated_time" content="2017-03-05T03:02:20.000Z">
+从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。">
+<meta property="og:updated_time" content="2017-03-05T03:07:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP Buflab 解题报告">
 <meta name="twitter:description" content="解题过程这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。
-从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。
-Level 0: Candle本题只需要我">
+从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。">
 
 
 
@@ -377,7 +374,7 @@ Level 0: Candle本题只需要我">
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-03-05T11:02:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-03-05T11:07:40+08:00">
                 2017-03-05
               </time>
             
@@ -454,6 +451,7 @@ Level 0: Candle本题只需要我">
       
         <h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。</p>
 <p>从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。</p>
+<a id="more"></a>
 <h3 id="Level-0-Candle"><a href="#Level-0-Candle" class="headerlink" title="Level 0: Candle"></a>Level 0: Candle</h3><p>本题只需要我们把返回地址修改到<code>smoke()</code>函数中，因此我们可以填上44个无用字节，然后填上<code>smoke()</code>的地址。我获得的地址为0x08048be8，因此最后4个byte填上 e8 8b 04 08 即可。</p>
 <p>###Level 1: Sparkler</p>
 <p>本题要我们传入自己的cookie作为参数运行fizz函数。注意到<code>fizz(int)</code>函数中有这么一句<code>mov    0x8(%ebp),%eax</code>，也就是说，在返回值的上8个字节中，需要填入我的cookie，同时返回值应该填<code>fizz(int)</code>的入口。<code>fizz(int)</code>的入口为0x08048c12，而我的cookie为737220a6。因此，分别在两个位置倒序输出即可。</p>
