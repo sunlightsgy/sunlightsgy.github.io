@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-03-05T02:24:21.000Z</updated>
+  <updated>2017-03-05T03:02:20.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -13,6 +13,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[CSAPP Buflab 解题报告]]></title>
+    <link href="https://sunlightsgy.github.io/2017/03/05/CSAPP-Buflab-%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"/>
+    <id>https://sunlightsgy.github.io/2017/03/05/CSAPP-Buflab-解题报告/</id>
+    <published>2017-03-05T03:01:36.000Z</published>
+    <updated>2017-03-05T03:02:20.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。</p>
+<p>从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。</p>
+<h3 id="Level-0-Candle"><a href="#Level-0-Candle" class="headerlink" title="Level 0: Candle"></a>Level 0: Candle</h3><p>本题只需要我们把返回地址修改到<code>smoke()</code>函数中，因此我们可以填上44个无用字节，然后填上<code>smoke()</code>的地址。我获得的地址为0x08048be8，因此最后4个byte填上 e8 8b 04 08 即可。</p>
+<p>###Level 1: Sparkler</p>
+<p>本题要我们传入自己的cookie作为参数运行fizz函数。注意到<code>fizz(int)</code>函数中有这么一句<code>mov    0x8(%ebp),%eax</code>，也就是说，在返回值的上8个字节中，需要填入我的cookie，同时返回值应该填<code>fizz(int)</code>的入口。<code>fizz(int)</code>的入口为0x08048c12，而我的cookie为737220a6。因此，分别在两个位置倒序输出即可。</p>
+<h3 id="Level-2-Firecracker"><a href="#Level-2-Firecracker" class="headerlink" title="Level 2: Firecracker"></a>Level 2: Firecracker</h3><p>本题要我们在传入<code>bang(int)</code>函数时，以我的cookie修改一个全局变量的值。首先用gdb找到这个全局变量的地址0x0804d100，然后反汇编以下代码：<br>​<br>    movl $0x737220a6, %eax<br>    movl $0x0804d100, %ecx<br>    movl %eax,(%ecx)<br>    ret</p>
+<p>将它放在我们填充的字符串的开头。然后用00补齐剩下的字符串，在将返回地址设为<code>%ebp-0x28</code>的地址，这样就可以运行我们的代码了。再将返回地址的上4个byte设为<code>bang(int)</code>的入口地址，即可在二次返回时进入正确的函数。</p>
+<h3 id="Level-3-Dynamite"><a href="#Level-3-Dynamite" class="headerlink" title="Level 3: Dynamite"></a>Level 3: Dynamite</h3><p>之前的实验破坏了栈的结构，这个实验要我们恢复它。首先我们还是要改变eax的值，然后要将返回地址设为原来该返回的地方(0x8048d8e)。所以反汇编以下代码：</p>
+<pre><code>movl $0x737220a6, %eax
+pushl $0x8048d8e
+ret
+</code></pre><p>这样就能正确地返回入口。但是还需要保持ebp的状态不被改变，因为在填入字符串的时候，ebp的值被覆盖了。所以，覆盖那部分的值，应该是ebp原来所保持的值(0x55683db0)。所以，将以上几个部分修改完就可以了。</p>
+<h3 id="Level-4-Nitroglycerin"><a href="#Level-4-Nitroglycerin" class="headerlink" title="Level 4: Nitroglycerin"></a>Level 4: Nitroglycerin</h3><p>本题和上一个题所不同的就是，这里的栈指针是改变的。因此，要获得ebp的值，只能根据上下文的esp的值来操作。可以发现在<code>getbufn()</code>函数中，最终所要保持的ebp值为<code>0x28(%esp)</code>,所以反汇编以下代码。</p>
+<pre><code>lea 0x28(%esp), %ebp
+movl $0x737220a6, %eax
+movl $0x8048e0b, %edx
+subl $1,%edx
+subl $4,%esp
+movl %edx,(%esp)
+ret
+</code></pre><p>同时，值得注意的是这次需要填的长度为520个字符，并且之前的字符应该都填90(nop)指令，直到能正好存下以上代码。然后原ebp所在的地址可以任意覆盖，返回地址上应该填入多次试验后所获得的栈底的最高位置。如此，便完成了这个第五题。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。</p>
+<p>]]>
+    </summary>
+    
+      <category term="assembly" scheme="https://sunlightsgy.github.io/tags/assembly/"/>
+    
+      <category term="courses" scheme="https://sunlightsgy.github.io/categories/courses/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[CSAPP Bomblab 解题报告]]></title>
