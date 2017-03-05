@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sunlightsgy.github.io/about/index.html</loc>
+    
+    <lastmod>2017-03-05T15:46:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sunlightsgy.github.io/tags/index.html</loc>
     
     <lastmod>2017-03-05T04:57:53.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://sunlightsgy.github.io/categories/index.html</loc>
     
     <lastmod>2017-03-05T04:57:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sunlightsgy.github.io/about/index.html</loc>
-    
-    <lastmod>2017-03-05T04:55:29.000Z</lastmod>
     
   </url>
   
