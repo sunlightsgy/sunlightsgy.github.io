@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-03-05T03:07:40.000Z</updated>
+  <updated>2017-04-06T15:45:06.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -13,6 +13,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[多密钥ssh-key生成与管理]]></title>
+    <link href="https://sunlightsgy.github.io/2017/04/06/%E5%A4%9A%E5%AF%86%E9%92%A5ssh-key%E7%94%9F%E6%88%90%E4%B8%8E%E7%AE%A1%E7%90%86/"/>
+    <id>https://sunlightsgy.github.io/2017/04/06/多密钥ssh-key生成与管理/</id>
+    <published>2017-04-06T14:58:42.000Z</published>
+    <updated>2017-04-06T15:45:06.000Z</updated>
+    <content type="html"><![CDATA[<p>由于 git 大文件用 http 方式难以传输，必须使用 ssh-key，而 ssh-key 又生成了好多个。最近在各种折腾 ssh，公钥私钥上花费了很多时间，现将一些问题总结如下。系统为 Mac/Linux。</p>
+<h2 id="密钥的原理"><a href="#密钥的原理" class="headerlink" title="密钥的原理"></a>密钥的原理</h2><p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
+<p>整个ssh密码登录过程是这样的：</p>
+<ol>
+<li>用户向远程主机发登录请求：ssh user@远程主机</li>
+<li>远程主机收到用户的登录请求，把自己的公钥发给用户。</li>
+<li>用户使用这个公钥，将登录密码加密后，发送回远程主机。</li>
+<li>远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。</li>
+</ol>
+<p>在linux上，如果你是第一次登录对方主机，系统会出现下面的提示：</p>
+<blockquote>
+<p>$ ssh user@host </p>
+<p>The authenticity of host ‘host (12.18.429.21)’ can’t be established. </p>
+<p>RSA key fingerprint is 98:2e:d7:e0:de9f:ac:67:28:c2:42:2d:37:16:58:4d. </p>
+<p>Are you sure you want to continue connecting (yes/no)?</p>
+</blockquote>
+<p>这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？ </p>
+<p>所谓”公钥指纹”，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是<code>98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d</code>，再进行比较，就容易多了。 </p>
+<p>很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。 </p>
+<p>假定经过风险衡量以后，用户决定接受这个远程主机的公钥。 </p>
+<blockquote>
+<p>Are you sure you want to continue connecting (yes/no)? yes</p>
+</blockquote>
+<p>系统会出现一句提示，表示host主机已经得到认可。 </p>
+<blockquote>
+<p>Warning: Permanently added ‘host,12.18.429.21’ (RSA) to the list of known hosts.</p>
+</blockquote>
+<p>然后，会要求输入密码。 </p>
+<blockquote>
+<p>Password: (enter password)</p>
+</blockquote>
+<p>如果密码正确，就可以登录了。 </p>
+<p>原文：<a href="http://itindex.net/detail/48724-ssh-%E8%AE%A4%E8%AF%81-%E5%8E%9F%E7%90%86?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">http://itindex.net/detail/48724-ssh-认证-原理</a></p>
+<h2 id="密钥的生成和管理"><a href="#密钥的生成和管理" class="headerlink" title="密钥的生成和管理"></a>密钥的生成和管理</h2><h3 id="密钥的生成"><a href="#密钥的生成" class="headerlink" title="密钥的生成"></a>密钥的生成</h3><p>在命令行中，键入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;$your_email&quot;</div></pre></td></tr></table></figure>
+<p>会生成一对密钥，默认的情况下，私钥将放在<code>~/.ssh/id_rsa</code>，对应的公钥则为<code>~/.ssh/id_rsa.pub</code>。</p>
+<p>在生成的过程中，会询问你放密钥的位置。由于每个人可能不止需要一个密钥，所以可以另存为其他名字的密钥，比如<code>path/to/your/dir/id_rsa_new</code>，此时它也将生成对应的公钥。</p>
+<p>使用以下代码来查看生成的公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>将公钥复制到你需要的服务器上（比如 github，gitlab 等等）</p>
+<h3 id="密钥的管理"><a href="#密钥的管理" class="headerlink" title="密钥的管理"></a>密钥的管理</h3><p>如前文所说，如果我们需要多个密钥，那么在使用中，如何确定实际使用哪一个呢？</p>
+<p>目前为止，ssh-key 用得最多的两个 地方，一是 git 相关服务，二是远程连接服务器。</p>
+<h4 id="命令输入"><a href="#命令输入" class="headerlink" title="命令输入"></a>命令输入</h4><p>用<code>-i</code>指定私钥，<code>-p</code>指定端口，连接服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh -i path/to/your/key developer@192.168.1.237 -p 23</div><div class="line">scp -i path/to/your/key filename developer@192.168.1.237:/diskpath</div></pre></td></tr></table></figure>
+<h4 id="配置-ssh-config-文件"><a href="#配置-ssh-config-文件" class="headerlink" title="配置 ~/.ssh/config 文件"></a>配置 ~/.ssh/config 文件</h4><p>由于 git 命令不能指定私钥，所以要通过 ~/.ssh/config 文件来控制。如果没有就在~/.ssh目录创建config文件，该文件用于配置私钥对应的服务器。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Host github</div><div class="line">HostName github.com</div><div class="line">User git</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line"> </div><div class="line">Host tsinghua</div><div class="line">HostName tsinghua.edu.cn</div><div class="line">User git</div><div class="line">IdentityFile ~/.ssh/id_rsa_new</div></pre></td></tr></table></figure>
+<p>这样，链接到 github.com 时，使用的就是 id_rsa；链接到 tsinghua.edu.cn 时，使用 id_rsa_new。另外，Host 的名字可以随便设置，并且在 ssh 后面相当于 User@HostName，比如 <code>ssh github</code> 等价于 <code>ssh git@github.com</code>。</p>
+<h4 id="私钥密码修改"><a href="#私钥密码修改" class="headerlink" title="私钥密码修改"></a>私钥密码修改</h4><p>如果工作中，你使用了一个没有密码的私钥，有一天服务器被黑了，你是跳到黄河都洗不清。而生成密钥时，往往会选择一个比较简单的密码。为了安全起见，还是应该修改一下：利用<code>ssh-keygen -p</code>，系统会提示选择需要修改的私钥，默认是<code>~/.ssh/id_rsa</code>，选好文件后按回车，会提示你输入旧密码，输入好后会提示输入新密码，则修改完成。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>由于 git 大文件用 http 方式难以传输，必须使用 ssh-key，而 ssh-key 又生成了好多个。最近在各种折腾 ssh，公钥私钥上花费了很多时间，现将一些问题总结如下。系统为 Mac/Linux。</p>
+<h2 id="密钥的原理"><a href="#密钥]]>
+    </summary>
+    
+      <category term="git" scheme="https://sunlightsgy.github.io/tags/git/"/>
+    
+      <category term="engineering" scheme="https://sunlightsgy.github.io/categories/engineering/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[CSAPP Buflab 解题报告]]></title>
