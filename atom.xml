@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-04-06T15:45:06.000Z</updated>
+  <updated>2017-04-06T15:46:46.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -19,9 +19,10 @@
     <link href="https://sunlightsgy.github.io/2017/04/06/%E5%A4%9A%E5%AF%86%E9%92%A5ssh-key%E7%94%9F%E6%88%90%E4%B8%8E%E7%AE%A1%E7%90%86/"/>
     <id>https://sunlightsgy.github.io/2017/04/06/多密钥ssh-key生成与管理/</id>
     <published>2017-04-06T14:58:42.000Z</published>
-    <updated>2017-04-06T15:45:06.000Z</updated>
+    <updated>2017-04-06T15:46:46.000Z</updated>
     <content type="html"><![CDATA[<p>由于 git 大文件用 http 方式难以传输，必须使用 ssh-key，而 ssh-key 又生成了好多个。最近在各种折腾 ssh，公钥私钥上花费了很多时间，现将一些问题总结如下。系统为 Mac/Linux。</p>
 <h2 id="密钥的原理"><a href="#密钥的原理" class="headerlink" title="密钥的原理"></a>密钥的原理</h2><p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
+<a id="more"></a>
 <p>整个ssh密码登录过程是这样的：</p>
 <ol>
 <li>用户向远程主机发登录请求：ssh user@远程主机</li>
@@ -71,7 +72,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>由于 git 大文件用 http 方式难以传输，必须使用 ssh-key，而 ssh-key 又生成了好多个。最近在各种折腾 ssh，公钥私钥上花费了很多时间，现将一些问题总结如下。系统为 Mac/Linux。</p>
-<h2 id="密钥的原理"><a href="#密钥]]>
+<h2 id="密钥的原理"><a href="#密钥的原理" class="headerlink" title="密钥的原理"></a>密钥的原理</h2><p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>]]>
+    
     </summary>
     
       <category term="git" scheme="https://sunlightsgy.github.io/tags/git/"/>
