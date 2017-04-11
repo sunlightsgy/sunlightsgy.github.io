@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="sunlight's blog">
 <meta property="og:description" content="阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》
 摘要字典学习（Dictionary Learning）中，输入信号被字典元素（dictionary atom）的线性组合所表示。字典学习最初是用来解决单一模态的问题，但是最近的研究表明了对于多模态的输入来说，在特征层面上利用联合稀疏表征（joint s">
-<meta property="og:updated_time" content="2017-04-11T16:42:43.000Z">
+<meta property="og:updated_time" content="2017-04-11T16:47:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多模态字典学习(Multimodal Dictionary Learning)">
 <meta name="twitter:description" content="阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》
@@ -374,7 +374,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-12T00:42:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-12T00:47:37+08:00">
                 2017-04-12
               </time>
             
@@ -467,8 +467,8 @@
 <li><strong>提升了基于稀疏表示的分类效率。</strong></li>
 </ul>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="字典学习（Dictionary-Learning）"><a href="#字典学习（Dictionary-Learning）" class="headerlink" title="字典学习（Dictionary Learning）"></a>字典学习（Dictionary Learning）</h3><p>与 PCA 方法不同，字典学习不需要强制使用正交条件，对于训练数据更加的灵活。令$\mathbf{X}=[x_1,x_2,…,x_N]\in R^{n\times N}$ 为N个训练样本的集合，字典$D\in R^{n \times d}$可以通过最小化下列经验代价函数得到<br>$$<br>g_N(D) = \frac{1}{N} \sum^{N}_{i=1}l_u(x_i,D)<br>$$<br>要满足 $D \in R^{n \times d} ||d_k||_{l_2} \leq 1$，其中$d_k$是 D 的第 k 个字典元素。非监督的 loss function 定义为</p>
-<p>$$<br>l_u(x_i,D)=min_{\alpha\in R^{d}}||x-Da||^2_{l2}+\lambda_1||\alpha||_{l_1}+\lambda_2||\alpha||^2{l_2}<br>$$<br>这是稀疏编码问题的最优解，其中$\lambda_1,\lambda_2$是正则化参数。另一方面，对于经验代价，人们往往关注其期望风险，而不是其完美的最小化。[2]中提出了一个在线的算法去发现字典 D，其能够最小化下列的随机误差<br>$$<br>g(D)=E_x[l_u(x,D)],<br>$$<br>这里假设了 x 从一个有限概率分布 p(x) 中获取，而$E_x$是它的期望。这个训练得到的字典 D 就可以被用来（稀疏地）重构输入。另一个用处是拿来做特征提取，因为稀疏编码$\alpha^<em>(x,D)$可以视作表征输入x的特征向量。于是在训练分类器的时候，我们有<br>$$<br>min_{w\in\mathscr{W}}E_{y,x}[l(y,w,\alpha^</em>(x,D))]+\frac{v}{2}||w||^2_{l_2}<br>$$<br>其中y是 ground truth 标签，w 是分类器参数，v 是一个正则化参数，l 是一个凸损失函数，度量给定$\alpha^<em>$和w时，能多好地预测 y。值得注意的是，这个是非监督的。对于有监督的版本为<br>$$<br>min_{w\in\mathscr{W},D\in\mathscr{D}}E_{y,x}[l_{su}(y,w,\alpha^</em>(x,D))]+\frac{v}{2}||w||^2_{l_2}<br>$$</p>
-<h3 id="多模态联合稀疏表示（Multimodal-joint-sparse-representation）"><a href="#多模态联合稀疏表示（Multimodal-joint-sparse-representation）" class="headerlink" title="多模态联合稀疏表示（Multimodal joint sparse representation）"></a>多模态联合稀疏表示（Multimodal joint sparse representation）</h3><p>联合稀疏表示是特征融合的一个有力工具。令$S\in{1,…,S}$是有限的模态集合，$x^s$代表第 s 个模态的特征向量，$D^s$是第 s 个模态的字典。假设多模态的字典是从不同模态的训练数据中构建的，给定$x^s$，一个最优的稀疏矩阵$A^<em>$可以这样获得：<br>$$<br>argmin_{A=[\alpha^1,\alpha^2,…,\alpha^s]}\frac{1}{2}\sum_{s=1}^S||x^s-D^s\alpha^s||^2_{l_2}+\lambda||A||_{l_{12}}<br>$$<br>这篇文章采用了 ADMM 方法[3]来找到$A^</em>$。多模态联合稀疏表示展现了很好的效果，最重要的是，去除了训练数据中的冗余信息。</p>
+<p>$$<br>l_u(x_i,D)=min_{\alpha\in R^{d}}||x-Da||^2_{l2}+\lambda_1||\alpha||_{l_1}+\lambda_2||\alpha||^2{l_2}<br>$$<br>这是稀疏编码问题的最优解，其中$\lambda_1,\lambda_2$是正则化参数。另一方面，对于经验代价，人们往往关注其期望风险，而不是其完美的最小化。[2]中提出了一个在线的算法去发现字典 D，其能够最小化下列的随机误差<br>$$<br>g(D)=E_x[l_u(x,D)],<br>$$<br>这里假设了 x 从一个有限概率分布 p(x) 中获取，而$E_x$是它的期望。这个训练得到的字典 D 就可以被用来（稀疏地）重构输入。另一个用处是拿来做特征提取，因为稀疏编码$\alpha^(x,D)$可以视作表征输入x的特征向量。于是在训练分类器的时候，我们有<br>$$<br>min_{w\in\mathscr{W}}E_{y,x}[l(y,w,\alpha(x,D))]+\frac{v}{2}||w||^2_{l_2}<br>$$<br>其中y是 ground truth 标签，w 是分类器参数，v 是一个正则化参数，l 是一个凸损失函数，度量给定$\alpha$和w时，能多好地预测 y。值得注意的是，这个是非监督的。对于有监督的版本为<br>$$<br>min_{w\in\mathscr{W},D\in\mathscr{D}}E_{y,x}[l_{su}(y,w,\alpha(x,D))]+\frac{v}{2}||w||^2_{l_2}<br>$$</p>
+<h3 id="多模态联合稀疏表示（Multimodal-joint-sparse-representation）"><a href="#多模态联合稀疏表示（Multimodal-joint-sparse-representation）" class="headerlink" title="多模态联合稀疏表示（Multimodal joint sparse representation）"></a>多模态联合稀疏表示（Multimodal joint sparse representation）</h3><p>联合稀疏表示是特征融合的一个有力工具。令$S\in{1,…,S}$是有限的模态集合，$x^s$代表第 s 个模态的特征向量，$D^s$是第 s 个模态的字典。假设多模态的字典是从不同模态的训练数据中构建的，给定$x^s$，一个最优的稀疏矩阵$A^<em>$可以这样获得：<br>$$<br>argmin_{A=[\alpha^1,\alpha^2,…,\alpha^s]}\frac{1}{2}\sum_{s=1}^S||x^s-D^s\alpha^s||^2_{l_2}+\lambda||A||_{l_{12}}<br>$$<br>这篇文章采用了 ADMM 方法[3]来找到$A^\</em>$。多模态联合稀疏表示展现了很好的效果，最重要的是，去除了训练数据中的冗余信息。</p>
 <p>基础部分就介绍到这里，大家如果有兴趣的话，可以亲自读读这篇论文，看看他是如何把多模态稀疏表示和字典学习融合在一起的。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
 <li>J. Zheng and Z. Jiang, “Learning view-invariant sparse representations for cross-view action recognition,” in Proc. IEEE Intel. Conf. Computer Vision (ICCV), 2013, pp. 3176–3183.</li>
