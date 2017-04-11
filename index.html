@@ -375,7 +375,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T20:12:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T20:31:33+08:00">
                 2017-04-11
               </time>
             
@@ -469,9 +469,9 @@
 <li><strong>提升了基于稀疏表示的分类效率。</strong></li>
 </ul>
 <h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><h3 id="字典学习-1"><a href="#字典学习-1" class="headerlink" title="字典学习"></a>字典学习</h3><p>与 PCA 方法不同，字典学习不需要强制使用正交条件，对于训练数据更加的灵活。令$\mathbf{X}=[x_1,x_2,…,x_N]\in R^{n\times N}$ 为N个训练样本的集合，字典$D\in R^{n \times d}$可以通过最小化下列经验代价函数得到</p>
-<p>$$g<em>N(D) = \frac{1}{N}\sum^N</em>{i=1}l_u(x_i,D)$$</p>
-<p>要满足 $D \in R^{n\times d},||d<em>k||</em>{l_2} \leq 1$，其中$d_k$是 D 的第 k 个字典元素。非监督的 loss function 定义为</p>
-<p>$l_u(x<em>i,D)=min</em>{\alpha\in R^{d}}||x-Da||^2_{l_2}+\lambda<em>1||\alpha||</em>{l_1}+\lambda<em>2||\alpha||^2</em>{l_2}$</p>
+<p>$$g<em>N(D) = \frac{1}{N} \sum^{N}</em>{i=1}l_u(x_i,D)$$</p>
+<p>要满足 $D \in R^{n \times d} ||d<em>k||</em>{l_2} \leq 1$，其中$d_k$是 D 的第 k 个字典元素。非监督的 loss function 定义为</p>
+<p>$$l_u(x<em>i,D)=min</em>{\alpha\in R^{d}}||x-Da||^2_{l_2}+\lambda<em>1||\alpha||</em>{l_1}+\lambda<em>2||\alpha||^2</em>{l_2}$$</p>
 
           
         
