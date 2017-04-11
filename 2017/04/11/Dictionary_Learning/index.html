@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="machine_learning," />
 
 
 
@@ -89,15 +89,19 @@
 
 
 
-<meta name="description" content="活到老，学到老">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunlight's blog">
-<meta property="og:url" content="https://sunlightsgy.github.io/index.html">
+<meta name="description" content="阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》
+摘要字典学习（Dictionary Learning）中，输入信号被字典元素（dictionary atom）的线性组合所表示。字典学习最初是用来解决单一模态的问题，但是最近的研究表明了对于多模态的输入来说，在特征层面上利用联合稀疏表征（joint s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="任务导向的多模态字典学习">
+<meta property="og:url" content="https://sunlightsgy.github.io/2017/04/11/Dictionary_Learning/index.html">
 <meta property="og:site_name" content="sunlight's blog">
-<meta property="og:description" content="活到老，学到老">
+<meta property="og:description" content="阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》
+摘要字典学习（Dictionary Learning）中，输入信号被字典元素（dictionary atom）的线性组合所表示。字典学习最初是用来解决单一模态的问题，但是最近的研究表明了对于多模态的输入来说，在特征层面上利用联合稀疏表征（joint s">
+<meta property="og:updated_time" content="2017-04-11T11:43:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sunlight's blog">
-<meta name="twitter:description" content="活到老，学到老">
+<meta name="twitter:title" content="任务导向的多模态字典学习">
+<meta name="twitter:description" content="阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》
+摘要字典学习（Dictionary Learning）中，输入信号被字典元素（dictionary atom）的线性组合所表示。字典学习最初是用来解决单一模态的问题，但是最近的研究表明了对于多模态的输入来说，在特征层面上利用联合稀疏表征（joint s">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://sunlightsgy.github.io/"/>
+  <link rel="canonical" href="https://sunlightsgy.github.io/2017/04/11/Dictionary_Learning/"/>
 
 
 
 
 
-  <title> sunlight's blog </title>
+  <title> 任务导向的多模态字典学习 | sunlight's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,9 +160,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -309,9 +311,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -341,10 +343,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/11/Dictionary_Learning/" itemprop="url">
-                  任务导向的多模态字典学习
-                </a>
+                任务导向的多模态字典学习
               
             
           </h1>
@@ -450,9 +449,7 @@
       
 
       
-        
-          
-            <p>阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》</p>
+        <p>阅读论文：《Multimodal Task-Driven Dictionary Learning for Image Classiﬁcation》</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p><strong>字典学习（Dictionary Learning）</strong>中，输入信号被<strong>字典元素（dictionary atom）</strong>的线性组合所表示。字典学习最初是用来解决单一模态的问题，但是最近的研究表明了对于多模态的输入来说，在特征层面上利用联合稀疏表征（joint sparse representation）可以达到很好的效果。这篇文章提出了一个任务导向的，也即有监督的多模态字典学习方法。在这个方法中，多模态字典和他们对应的分类器是被同时学习的。它利用了<strong>联合稀疏约束（joint sparsity constraint）</strong>来增强同构或异构数据中的联系，获得的多模态字典可以产生有识别力的<strong>隐藏特征（latent features）</strong>，可以用于二分类问题以及多分类问题。此外，这篇文章还提出了一个当前方法的扩展，使用一个 <strong>mixed joint and independent sparsity prior 约束</strong>，使得特征层面的融合变得更加灵活。这篇文章以四个应用验证了他们的方法：多模态人脸识别、多视角人脸识别、多视角动作识别和多模态生物识别。结果也证明，相比于非监督的、重构性的字典学习来说，任务导向的、有监督的学习在计算效率上更胜一筹。</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="多模态信息融合"><a href="#多模态信息融合" class="headerlink" title="多模态信息融合"></a>多模态信息融合</h3><p>采集多角度的信息，再将它们融合，往往能得到更好的识别效果。融合方法在大方向上可以分为<strong>特征融合（feature fusion）</strong>和<strong>分类器融合（classifier fusion）</strong>。特征融合方法将从不同来源提取的特征融合进单一的一个特征集中，然后用于分类；而分类器融合方法对每个来源的特征集都设计一个分类器，最后的结果由这些分类器单独的结果决策而成。在过去的研究中，分类器融合方法已经得到了很好的研究，但是特征融合研究甚少，主要是因为不同特征集之间有着诸多的不同，难以适配。一个简单的方法是将所有的特征全部放在一起，但是由于训练集有限，会导致<strong>维度灾难（curse of dimensionality）</strong>。即使我们拥有充足的训练数据，这种做法也不能捕捉不同特征源之间的关系，并且可能有很多噪声和冗余。但是有研究表明如果这些问题得到克服，那么特征融合可能大大提高分类表现。</p>
 <blockquote>
@@ -473,572 +470,85 @@
 <p>要满足$D \in R^{n\times d},||d<em>k||</em>{l_2}\leq1$，其中 $d_k$是 D 的第 k 个字典元素。非监督的 loss function 定义为</p>
 <p>$l_u(x<em>i,D)=min</em>{\alpha\in R^{d}}||x-Da||^2_{l_2}+\lambda<em>1||\alpha||</em>{l_1}+\lambda<em>2||\alpha||^2</em>{l_2}$</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunlightsgy.github.io/2017/04/06/多密钥ssh-key生成与管理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunlightsgy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunlight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/06/多密钥ssh-key生成与管理/" itemprop="url">
-                  多密钥ssh-key生成与管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T22:58:42+08:00">
-                2017-04-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-06T23:46:46+08:00">
-                2017-04-06
-              </time>
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/engineering/" itemprop="url" rel="index">
-                    <span itemprop="name">engineering</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/machine-learning/" rel="tag"># machine_learning</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/06/多密钥ssh-key生成与管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/多密钥ssh-key生成与管理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/04/06/多密钥ssh-key生成与管理/" class="leancloud_visitors" data-flag-title="多密钥ssh-key生成与管理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          <p>由于 git 大文件用 http 方式难以传输，必须使用 ssh-key，而 ssh-key 又生成了好多个。最近在各种折腾 ssh，公钥私钥上花费了很多时间，现将一些问题总结如下。系统为 Mac/Linux。</p>
-<h2 id="密钥的原理"><a href="#密钥的原理" class="headerlink" title="密钥的原理"></a>密钥的原理</h2><p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/06/多密钥ssh-key生成与管理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/06/多密钥ssh-key生成与管理/" rel="next" title="多密钥ssh-key生成与管理">
+                <i class="fa fa-chevron-left"></i> 多密钥ssh-key生成与管理
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunlightsgy.github.io/2017/03/05/CSAPP-Buflab-解题报告/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunlightsgy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunlight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/05/CSAPP-Buflab-解题报告/" itemprop="url">
-                  CSAPP Buflab 解题报告
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T11:01:36+08:00">
-                2017-03-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-03-05T11:07:40+08:00">
-                2017-03-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/courses/" itemprop="url" rel="index">
-                    <span itemprop="name">courses</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/05/CSAPP-Buflab-解题报告/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/CSAPP-Buflab-解题报告/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/05/CSAPP-Buflab-解题报告/" class="leancloud_visitors" data-flag-title="CSAPP Buflab 解题报告">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>这次的实验让我们对栈进行更深入的了解，通过读入超出栈帧容量的数据来破坏栈的结构，从而达到我们自己想要的效果。</p>
-<p>从实验中可以看出，就前四个level而言，在程序正常运行的情况下我们所能输入的最大字符串长度为0x28，也就是40byte。往上4个byte是寄存器ebp的值，再往上4个byte则是返回地址。第五个实验，最大字符串长度则为520byte。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/05/CSAPP-Buflab-解题报告/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2017/04/11/Dictionary_Learning/"
+     data-title="任务导向的多模态字典学习"
+     data-content=""
+     data-url="https://sunlightsgy.github.io/2017/04/11/Dictionary_Learning/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunlightsgy.github.io/2017/03/05/CSAPP-Bomblab-解题报告/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunlightsgy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunlight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/05/CSAPP-Bomblab-解题报告/" itemprop="url">
-                  CSAPP Bomblab 解题报告
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T10:17:38+08:00">
-                2017-03-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-03-05T10:24:21+08:00">
-                2017-03-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/courses/" itemprop="url" rel="index">
-                    <span itemprop="name">courses</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/05/CSAPP-Bomblab-解题报告/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/CSAPP-Bomblab-解题报告/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/05/CSAPP-Bomblab-解题报告/" class="leancloud_visitors" data-flag-title="CSAPP Bomblab 解题报告">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这次实验其实就是让我们对课上学习的汇编代码进行熟悉，比如堆栈的使用，函数的传参。一共有六个关卡和一个隐藏关卡，每一个关卡都需要我们进行一行输入，如果输入的数字或者字符串满足一定的要求，就能跳过<code>callq  0x4016a8 &lt;explode_bomb&gt;</code>这一个导致“炸弹爆炸”的调用，进行下一个阶段。当六个阶段解决完毕后，该题目通过。此外还有一个隐藏关，需要显式调用<code>call 0x401323 &lt;secret_phase&gt;</code>来完成。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/05/CSAPP-Bomblab-解题报告/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
           
           </div>
@@ -1046,6 +556,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/11/Dictionary_Learning/"
+           data-title="任务导向的多模态字典学习" data-url="https://sunlightsgy.github.io/2017/04/11/Dictionary_Learning/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1065,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -1174,6 +701,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多模态信息融合"><span class="nav-number">2.1.</span> <span class="nav-text">多模态信息融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏表示分类"><span class="nav-number">2.2.</span> <span class="nav-text">稀疏表示分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典学习"><span class="nav-number">2.3.</span> <span class="nav-text">字典学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多模态字典学习"><span class="nav-number">2.4.</span> <span class="nav-text">多模态字典学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章贡献"><span class="nav-number">2.5.</span> <span class="nav-text">文章贡献</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">3.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字典学习-1"><span class="nav-number">3.1.</span> <span class="nav-text">字典学习</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -1267,6 +810,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
