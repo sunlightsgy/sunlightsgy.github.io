@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-04-11T16:49:27.000Z</updated>
+  <updated>2017-05-02T16:25:06.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[WWW17-对在线自闭症社区中提到的诊断方法进行编目]]></title>
+    <link href="https://sunlightsgy.github.io/2017/05/02/WWW17-%E5%AF%B9%E5%9C%A8%E7%BA%BF%E8%87%AA%E9%97%AD%E7%97%87%E7%A4%BE%E5%8C%BA%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E8%AF%8A%E6%96%AD%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%9B%AE/"/>
+    <id>https://sunlightsgy.github.io/2017/05/02/WWW17-对在线自闭症社区中提到的诊断方法进行编目/</id>
+    <published>2017-05-02T11:24:38.000Z</published>
+    <updated>2017-05-02T16:25:06.000Z</updated>
+    <content type="html"><![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。本文是第一篇。原文链接<a href="http://dl.acm.org/citation.cfm?id=3052661。" target="_blank" rel="external">http://dl.acm.org/citation.cfm?id=3052661。</a></p>
+<a id="more"></a>
+<h2 id="Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities"><a href="#Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities" class="headerlink" title="Cataloguing Treatments Discussed and Used in Online Autism Communities"></a>Cataloguing Treatments Discussed and Used in Online Autism Communities</h2><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>这篇论文主要的思想是，在网上有很多跟精神健康相关的社区和论坛，里面的人们会互相讨论问题和解决方法。聚焦到自闭症(Autism)这个社区来说，论坛上一般有病人(patients)和监护人(caregiver) 两种角色。这些人经常会提出一些治疗方法，但是有的被采用了，有的并没有被采用，这篇论文想要做的就是去识别那些提出并被实际使用的治疗方法，从横向和纵向上去发现这些治疗手段，并构建了一个治疗手段集。</p>
+<h3 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h3><h4 id="命名实体识别"><a href="#命名实体识别" class="headerlink" title="命名实体识别"></a>命名实体识别</h4><p>这篇文章想要从OHC (online health communities) 中获取治疗信息，第一步就是得识别出这些治疗信息是什么，也即命名实体识别(named entity recognition)。它提到了一个成熟的系统临床文字处理系统 MedLEE，以及近五年得到广泛使用的 CRF 和 SVM。</p>
+<h4 id="数据集和标注"><a href="#数据集和标注" class="headerlink" title="数据集和标注"></a>数据集和标注</h4><p>数据集从autismweb.com和autism-pdd.net两个网站中下载，共有55万个帖子。他们将这些帖子标注为五种类别，表示这个帖子的治疗方法是与谁有关的：与病人有关并被实际使用的(pt)、与病人有关但没有被实际使用的(pt-gen)、与监护人有关的(cg)、与其他人有关的(others)、没有指定与谁有关的(gen)。</p>
+<h4 id="模型和实验"><a href="#模型和实验" class="headerlink" title="模型和实验"></a>模型和实验</h4><p>模型采用的是基于 CRF 的模型，特征方面利用了 OpenNLP 选取了一些词汇特征，以及用 StanfordNLP 选取了一些句法特征。实验中分析了每种帖子中提到的最多的一些词语，分析了在自闭症论坛中最常用的十种治疗手段。纵向地，它分析了每个用户随着时间的推移，提到治疗次数变化的规律等等。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。本文是第一篇。原文链接<a href="http://dl.acm.org/citation.cfm?id=3052661。">http://dl.acm.org/citation.cfm?id=3052661。</a></p>]]>
+    
+    </summary>
+    
+      <category term="computational health" scheme="https://sunlightsgy.github.io/tags/computational-health/"/>
+    
+      <category term="papers reading" scheme="https://sunlightsgy.github.io/categories/papers-reading/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[多模态字典学习(Multimodal Dictionary Learning)]]></title>
