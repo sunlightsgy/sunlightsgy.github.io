@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-05-02T16:25:06.000Z</updated>
+  <updated>2017-05-05T14:51:59.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -15,20 +15,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[WWW17-对在线自闭症社区中提到的诊断方法进行编目]]></title>
-    <link href="https://sunlightsgy.github.io/2017/05/02/WWW17-%E5%AF%B9%E5%9C%A8%E7%BA%BF%E8%87%AA%E9%97%AD%E7%97%87%E7%A4%BE%E5%8C%BA%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E8%AF%8A%E6%96%AD%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%9B%AE/"/>
-    <id>https://sunlightsgy.github.io/2017/05/02/WWW17-对在线自闭症社区中提到的诊断方法进行编目/</id>
+    <title><![CDATA[WWW17健康计算论文选读]]></title>
+    <link href="https://sunlightsgy.github.io/2017/05/02/WWW17%E5%81%A5%E5%BA%B7%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%80%89%E8%AF%BB/"/>
+    <id>https://sunlightsgy.github.io/2017/05/02/WWW17健康计算论文选读/</id>
     <published>2017-05-02T11:24:38.000Z</published>
-    <updated>2017-05-02T16:25:06.000Z</updated>
-    <content type="html"><![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。本文是第一篇。原文链接<a href="http://dl.acm.org/citation.cfm?id=3052661。" target="_blank" rel="external">http://dl.acm.org/citation.cfm?id=3052661。</a></p>
+    <updated>2017-05-05T14:51:59.000Z</updated>
+    <content type="html"><![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。</p>
 <a id="more"></a>
-<h2 id="Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities"><a href="#Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities" class="headerlink" title="Cataloguing Treatments Discussed and Used in Online Autism Communities"></a>Cataloguing Treatments Discussed and Used in Online Autism Communities</h2><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>这篇论文主要的思想是，在网上有很多跟精神健康相关的社区和论坛，里面的人们会互相讨论问题和解决方法。聚焦到自闭症(Autism)这个社区来说，论坛上一般有病人(patients)和监护人(caregiver) 两种角色。这些人经常会提出一些治疗方法，但是有的被采用了，有的并没有被采用，这篇论文想要做的就是去识别那些提出并被实际使用的治疗方法，从横向和纵向上去发现这些治疗手段，并构建了一个治疗手段集。</p>
-<h3 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h3><h4 id="命名实体识别"><a href="#命名实体识别" class="headerlink" title="命名实体识别"></a>命名实体识别</h4><p>这篇文章想要从OHC (online health communities) 中获取治疗信息，第一步就是得识别出这些治疗信息是什么，也即命名实体识别(named entity recognition)。它提到了一个成熟的系统临床文字处理系统 MedLEE，以及近五年得到广泛使用的 CRF 和 SVM。</p>
-<h4 id="数据集和标注"><a href="#数据集和标注" class="headerlink" title="数据集和标注"></a>数据集和标注</h4><p>数据集从autismweb.com和autism-pdd.net两个网站中下载，共有55万个帖子。他们将这些帖子标注为五种类别，表示这个帖子的治疗方法是与谁有关的：与病人有关并被实际使用的(pt)、与病人有关但没有被实际使用的(pt-gen)、与监护人有关的(cg)、与其他人有关的(others)、没有指定与谁有关的(gen)。</p>
-<h4 id="模型和实验"><a href="#模型和实验" class="headerlink" title="模型和实验"></a>模型和实验</h4><p>模型采用的是基于 CRF 的模型，特征方面利用了 OpenNLP 选取了一些词汇特征，以及用 StanfordNLP 选取了一些句法特征。实验中分析了每种帖子中提到的最多的一些词语，分析了在自闭症论坛中最常用的十种治疗手段。纵向地，它分析了每个用户随着时间的推移，提到治疗次数变化的规律等等。</p>
+<h2 id="Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities"><a href="#Cataloguing-Treatments-Discussed-and-Used-in-Online-Autism-Communities" class="headerlink" title="Cataloguing Treatments Discussed and Used in Online Autism Communities"></a>Cataloguing Treatments Discussed and Used in Online Autism Communities</h2><p>这篇论文主要的思想是，在网上有很多跟精神健康相关的社区和论坛，里面的人们会互相讨论问题和解决方法。聚焦到自闭症(Autism)这个社区来说，论坛上一般有病人(patients)和监护人(caregiver) 两种角色。这些人经常会提出一些治疗方法，但是有的被采用了，有的并没有被采用，这篇论文想要做的就是去识别那些提出并被实际使用的治疗方法，从横向和纵向上去发现这些治疗手段，并构建了一个治疗手段集。</p>
+<p>原文链接<a href="http://dl.acm.org/citation.cfm?id=3052661。" target="_blank" rel="external">http://dl.acm.org/citation.cfm?id=3052661。</a></p>
+<h2 id="Harnessing-the-Web-for-Population-Scale-Physiological-Sensing-A-Case-Study-of-Sleep-and-Performance"><a href="#Harnessing-the-Web-for-Population-Scale-Physiological-Sensing-A-Case-Study-of-Sleep-and-Performance" class="headerlink" title="Harnessing the Web for Population-Scale Physiological Sensing: A Case Study of Sleep and Performance"></a>Harnessing the Web for Population-Scale Physiological Sensing: A Case Study of Sleep and Performance</h2><p>人类的认知表现对创造、学习和事故预防都是非常重要的。人认知表现在一天中是变化的，而且大致24小时为周期的变化。但之前对睡眠和认知周期的研究工作都局限在于小规模的实验室中的研究，没有捕捉到现实世界复杂的环境。因此，最近研究人员聚焦于如何在自然环境中研究大规模的人类认知行为特征。这篇文章提出了目前为止最大的研究，他们利用人们进行网页搜索的行为（按键反应速度和点击交互）来衡量他们的认知水平，并让他们带上可穿戴设备来记录其睡眠时间。他们发现人们在现实生活中的认知表现不仅受到每日行为模式的影响，也受到其前一天的睡眠影响。他们结合实验室之前的研究结果和他们探索出的昼夜节律（circadian rhythms）、自我平衡的睡眠驱动力（homeostatic sleep drive）和睡眠惯性（sleep inertia）来研究睡眠和认知表现之间的关系。进一步地，他们量化了不充足的睡眠对于现实的认知表现的影响，发现如果连续两天睡眠不足六小时，接下来的六天时间会有明显的睡眠质量下降。</p>
+<p>原文链接<a href="http://dl.acm.org/citation.cfm?id=3052637。" target="_blank" rel="external">http://dl.acm.org/citation.cfm?id=3052637。</a></p>
+<h2 id="Forecasting-Seasonal-Inﬂuenza-Fusing-Digital-Indicators-and-a-Mechanistic-Disease-Model"><a href="#Forecasting-Seasonal-Inﬂuenza-Fusing-Digital-Indicators-and-a-Mechanistic-Disease-Model" class="headerlink" title="Forecasting Seasonal Inﬂuenza Fusing Digital Indicators and a Mechanistic Disease Model"></a>Forecasting Seasonal Inﬂuenza Fusing Digital Indicators and a Mechanistic Disease Model</h2><p>基于一个用微博数据标注地理位置的随机的空间机械模型（mechanistic model），这篇文章提出了一个季节性流感预测模型。这个工作提供了超过600个人口普查区域的空间初始状态，去预测一场流行病中最受关注的问题：峰值时刻和强度。他们比较了2014-15和2015-16两个年度他们的结果和官方的数据，发现他们的模型能够提前六周给出比较好的预测结果。这个方法的一个好处在于能够捕捉流感相关的参数，这样对于公共健康的决策有好处，而传统的统计模型就不会考虑这种疾病的动态变化。最后，这个工作使得在初始化阶段多种数据能够融合，使得工作具有扩展性。</p>
+<p>原文链接<a href="http://dl.acm.org/citation.cfm?id=3052678" target="_blank" rel="external">http://dl.acm.org/citation.cfm?id=3052678</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。本文是第一篇。原文链接<a href="http://dl.acm.org/citation.cfm?id=3052661。">http://dl.acm.org/citation.cfm?id=3052661。</a></p>]]>
+    <![CDATA[<p>本次 WWW2017 有一个 track 是 computational health，里面一共收了八篇 paper。由于一直在做相关的工作，所以读了一下这些论文。</p>]]>
     
     </summary>
     
