@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Free Writing]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sunlightsgy.github.io/"/>
-  <updated>2017-05-07T05:25:30.000Z</updated>
+  <updated>2017-05-07T13:30:41.000Z</updated>
   <id>https://sunlightsgy.github.io/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Python中的编码转换]]></title>
+    <link href="https://sunlightsgy.github.io/2017/05/07/Python%E4%B8%AD%E7%9A%84%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/"/>
+    <id>https://sunlightsgy.github.io/2017/05/07/Python中的编码转换/</id>
+    <published>2017-05-07T13:05:51.000Z</published>
+    <updated>2017-05-07T13:30:41.000Z</updated>
+    <content type="html"><![CDATA[<p>Python是门好语言，但是它的编码转换挺坑的，每每都在编码转换中遇到问题。现在就这些问题记录一下。</p>
+<p>以下针对 python3。</p>
+<h2 id="十六进制-str-转-bytes"><a href="#十六进制-str-转-bytes" class="headerlink" title="十六进制 str 转 bytes"></a>十六进制 str 转 bytes</h2><p>由于遇到文件中是<code>&#39;\xe7\x9a\x84&#39;</code>这种16进制格式，如何将它转换为指定编码格式的字符串输出呢？这个 str 转 str 的问题让我头疼了好久。答案是利用<code>bytes.fromhex(str)</code>这个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rawstr = <span class="string">'\xe7\x9a\x84'</span> 				<span class="comment"># type(str) == 'str'</span></div><div class="line">hexstr = rawstr.replace(<span class="string">'\\x'</span>,<span class="string">''</span>)		<span class="comment"># type(hexstr) == 'str'</span></div><div class="line">rawbytes = bytes.fromhex(hexstr) 	<span class="comment"># type(rawbytes) == 'bytes'</span></div><div class="line">charset = <span class="string">'utf-8'</span></div><div class="line">output = rawbytes.decode(charset)	<span class="comment"># type(output) == 'str'</span></div><div class="line">print(output)						<span class="comment"># 他们</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="str-和-bytes-互转"><a href="#str-和-bytes-互转" class="headerlink" title="str 和 bytes 互转"></a>str 和 bytes 互转</h2><p>如上所示，bytes 对象使用 decode 方法能转换成 str 对象，而 str 对象使用 encode 方法能转换成 bytes 对象。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; rawstr = <span class="string">'https://sunlightsgy.github.io/'</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(rawstr)</div><div class="line">&lt;class <span class="string">'str'</span>&gt;</div><div class="line">&gt;&gt;&gt; rawbytes = rawstr.encode(encoding=<span class="string">"utf-8"</span>)</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(rawbytes)</div><div class="line">&lt;class <span class="string">'bytes'</span>&gt;</div><div class="line">&gt;&gt;&gt; rawbytes</div><div class="line">b<span class="string">'https://sunlightsgy.github.io/'</span></div><div class="line">&gt;&gt;&gt; secondstr = rawbytes.decode(<span class="string">"utf-8"</span>)</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(secondstr)</div><div class="line">&lt;class <span class="string">'str'</span>&gt;</div><div class="line">&gt;&gt;&gt; secondstr</div><div class="line"><span class="string">'https://sunlightsgy.github.io/'</span></div></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Python是门好语言，但是它的编码转换挺坑的，每每都在编码转换中遇到问题。现在就这些问题记录一下。</p>
+<p>以下针对 python3。</p>
+<h2 id="十六进制-str-转-bytes"><a href="#十六进制-str-转-bytes" class="headerlink" title="十六进制 str 转 bytes"></a>十六进制 str 转 bytes</h2><p>由于遇到文件中是<code>&#39;\xe7\x9a\x84&#39;</code>这种16进制格式，如何将它转换为指定编码格式的字符串输出呢？这个 str 转 str 的问题让我头疼了好久。答案是利用<code>bytes.fromhex(str)</code>这个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rawstr = <span class="string">'\xe7\x9a\x84'</span> 				<span class="comment"># type(str) == 'str'</span></div><div class="line">hexstr = rawstr.replace(<span class="string">'\\x'</span>,<span class="string">''</span>)		<span class="comment"># type(hexstr) == 'str'</span></div><div class="line">rawbytes = bytes.fromhex(hexstr) 	<span class="comment"># type(rawbytes) == 'bytes'</span></div><div class="line">charset = <span class="string">'utf-8'</span></div><div class="line">output = rawbytes.decode(charset)	<span class="comment"># type(output) == 'str'</span></div><div class="line">print(output)						<span class="comment"># 他们</span></div></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="python" scheme="https://sunlightsgy.github.io/tags/python/"/>
+    
+      <category term="engineering" scheme="https://sunlightsgy.github.io/categories/engineering/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[WWW17健康计算论文选读]]></title>
